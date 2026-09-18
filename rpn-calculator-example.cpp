@@ -77,9 +77,16 @@ shared_ptr<uint16_t> rpn_calc(command const cmd, uint16_t const value = 0) {
         return make_shared<uint16_t>(calc_stack.top());
     }
 
+    if (cmd == cmd_top) {
+        if (calc_stack.empty()) {
+            return nullptr;
+        }
+
+        return make_shared<uint16_t>(calc_stack.top());
+    }
+
     return nullptr;
 }
-
 /*
  * *** STUDENTS SHOULD NOT NEED TO CHANGE THE CODE BELOW. IT IS A CUSTOM TEST HARNESS. ***
  */
